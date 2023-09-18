@@ -1,6 +1,6 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main, NextScript } from 'next/document'
 
-import{getCssText} from '@ignite-ui/react'
+import { getCssText } from '@ignite-ui/react'
 
 export default function Document() {
   return (
@@ -28,5 +28,5 @@ export default function Document() {
         <NextScript />
       </body>
     </Html>
-  );
+  )
 }
