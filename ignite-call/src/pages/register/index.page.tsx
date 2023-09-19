@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { Container, Form, FormError, Header } from './style'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const registerFormSchema = z.object({
   username: z
@@ -26,6 +28,7 @@ export default function Register() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    setValue,
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
   })
@@ -33,6 +36,14 @@ export default function Register() {
   function handleRegister(data: RegisterFormData) {
     console.log(data)
   }
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (router.query.username) {
+      setValue('username', String(router.query.username))
+    }
+  }, [router.query?.username, setValue])
 
   return (
     <Container>
@@ -49,7 +60,8 @@ export default function Register() {
       <Form as="form" onSubmit={handleSubmit(handleRegister)}>
         <label>
           <Text size="sm">Nome de usuário</Text>
-          <TextInput crossOrigin=""
+          <TextInput
+            crossOrigin=""
             prefix="ignite.com/"
             placeholder="seu-usuário"
             {...register('username')}
@@ -62,7 +74,11 @@ export default function Register() {
 
         <label>
           <Text size="sm">Nome completo</Text>
-          <TextInput crossOrigin="" placeholder="Seu nome" {...register('name')} />
+          <TextInput
+            crossOrigin=""
+            placeholder="Seu nome"
+            {...register('name')}
+          />
 
           {errors.name && (
             <FormError size="sm">{errors.name.message}</FormError>

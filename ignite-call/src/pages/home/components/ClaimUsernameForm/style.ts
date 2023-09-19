@@ -1,6 +1,6 @@
-import {styled,Box , Text} from '@ignite-ui/react'
+import { styled, Box, Text } from '@ignite-ui/react'
 
-export const Form = styled(Box,{
+export const Form = styled(Box, {
   display: 'grid',
   gridTemplateColumns: '1fr auto',
   gap: '$2',
@@ -12,10 +12,10 @@ export const Form = styled(Box,{
   },
 })
 
-export const FormAnnotation= styled("div",{
-  marginTop:'$2',
+export const FormAnnotation = styled('div', {
+  marginTop: '$2',
 
   [`> ${Text}`]: {
-    color: '$gray400'
+    color: '$gray400',
   },
 })
