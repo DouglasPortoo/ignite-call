@@ -7,6 +7,7 @@ import { z } from 'zod'
 import { Container, Form, FormError, Header } from './style'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { api } from '@/src/lib/axios'
 
 const registerFormSchema = z.object({
   username: z
@@ -33,8 +34,15 @@ export default function Register() {
     resolver: zodResolver(registerFormSchema),
   })
 
-  function handleRegister(data: RegisterFormData) {
-    console.log(data)
+  async function handleRegister(data: RegisterFormData) {
+    try {
+      await api.post('/users', {
+        name: data.name,
+        username: data.username,
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const router = useRouter()
