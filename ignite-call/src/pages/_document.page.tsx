@@ -18,6 +18,8 @@ export default function Document() {
           rel="stylesheet"
         />
 
+        <title>ignite-call</title>
+
         <style
           id="stitches"
           dangerouslySetInnerHTML={{ __html: getCssText() }}
