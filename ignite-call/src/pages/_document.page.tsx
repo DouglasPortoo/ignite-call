@@ -18,7 +18,7 @@ export default function Document() {
           rel="stylesheet"
         />
 
-        <title>ignite-call</title>
+        {/* <title>ignite-call</title> */}
 
         <style
           id="stitches"
